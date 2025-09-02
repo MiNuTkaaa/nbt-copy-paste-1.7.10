@@ -1,0 +1,67 @@
+name: WorldCopyPaste
+version: 1.0
+main: com.yourname.myplugin.WorldCopyPaste
+description: Copy and paste world regions with NBT data preservation
+author: YourName
+website: https://github.com/yourname/worldcopypaste
+
+commands:
+  pos1:
+    description: Set the first corner of the selection
+    usage: /pos1
+    permission: worldcopypaste.pos
+  pos2:
+    description: Set the second corner of the selection
+    usage: /pos2
+    permission: worldcopypaste.pos
+  copy:
+    description: Copy the selected region to clipboard
+    usage: /copy
+    permission: worldcopypaste.copy
+  paste:
+    description: Paste the copied region at your location
+    usage: /paste
+    permission: worldcopypaste.paste
+
+  tool:
+    description: Bind held tool to alternate pos1/pos2 on right-click
+    usage: /tool
+    permission: worldcopypaste.pos
+
+  save:
+    description: Save current clipboard as a schematic
+    usage: /save <name>
+    permission: worldcopypaste.copy
+
+  load:
+    description: Load a schematic to clipboard
+    usage: /load <name>
+    permission: worldcopypaste.copy
+
+  grid:
+    description: Show an outline grid for your selection
+    usage: /grid [ticks]
+    permission: worldcopypaste.pos
+  clearselection:
+    description: Clear your selection positions and grid
+    usage: /clearselection
+    permission: worldcopypaste.pos
+
+permissions:
+  worldcopypaste.pos:
+    description: Allows setting selection corners
+    default: op
+  worldcopypaste.copy:
+    description: Allows copying regions
+    default: op
+  worldcopypaste.paste:
+    description: Allows pasting regions
+    default: op
+  worldcopypaste.*:
+    description: Gives access to all WorldCopyPaste commands
+    default: op
+    children:
+      worldcopypaste.pos: true
+      worldcopypaste.copy: true
+      worldcopypaste.paste: true
+      worldcopypaste.pos: true
